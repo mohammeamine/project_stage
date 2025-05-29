@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.5); opacity: 0.7; }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #3D5AFE }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(61, 90, 254, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(61, 90, 254, 0.8); }
+}
+
+@keyframes neuralPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes scale {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-[#3D5AFE] text-white font-medium rounded-md shadow-md hover:shadow-lg transition-all duration-300 hover:translate-y-[-2px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50;
+    background-size: 200% 100%;
+    background-image: linear-gradient(to right, #3D5AFE 50%, #2952E3 50%);
+    transition: background-position 0.5s;
+  }
+  
+  .btn-primary:hover {
+    background-position: -100% 0;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-3 bg-white text-[#3D5AFE] font-medium rounded-md shadow-md border border-[#3D5AFE] hover:bg-[#3D5AFE] hover:text-white transition-all duration-300 hover:translate-y-[-2px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50;
+  }
+  
+  .neural-bg {
+    @apply relative overflow-hidden;
+  }
+  
+  .neural-bg::before {
+    @apply content-[''] absolute inset-0 bg-repeat opacity-5;
+    background-size: 50px 50px;
+    animation: neuralPulse 4s ease-in-out infinite;
+  }
+  
+  .neural-node {
+    @apply absolute w-2 h-2 rounded-full bg-primary opacity-30;
+    animation: pulse 2s infinite;
+  }
+  
+  .neural-line {
+    @apply absolute bg-primary opacity-10;
+    height: 1px;
+    transform-origin: left;
+    animation: pulse 2s infinite;
+  }
+}
